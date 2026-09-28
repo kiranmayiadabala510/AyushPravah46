@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AyushPravah — Offline-First Clinical Trial Control Tower</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231b4332'/%3E%3Cstop offset='100%25' stop-color='%232d6a4f'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231e3a8a'/%3E%3Cstop offset='100%25' stop-color='%230284c7'/%3E%3C/linearGradient%3E%3ClinearGradient id='g3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232d6a4f'/%3E%3Cstop offset='100%25' stop-color='%2352b788'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='44' stroke='url(%23g2)' stroke-width='3' stroke-dasharray='210 65' fill='%23f8fafc'/%3E%3Ccircle cx='50' cy='50' r='38' stroke='url(%23g1)' stroke-width='2' fill='none'/%3E%3Cpath d='M 18 50 A 32 32 0 0 1 82 50' stroke='url(%23g2)' stroke-width='3.5' stroke-linecap='round' fill='none' opacity='0.85'/%3E%3Cpath d='M 50 18 C 30 30 32 54 50 64 C 68 54 70 30 50 18 Z' fill='url(%23g3)'/%3E%3Cpath d='M 50 22 L 50 60' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' opacity='0.8'/%3E%3Cpath d='M 22 56 Q 36 44 50 56 T 78 56' stroke='url(%23g2)' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='50' cy='56' r='4' fill='%231e3a8a'/%3E%3Ccircle cx='50' cy='56' r='2' fill='%23ffffff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Demo Disclaimer Bar -->
+  <div class="demo-disclaimer-banner">
+    <span>SIH26046 • AYUSHPRAVAH Prototype • Synthetic Data Only</span>
+    <span style="opacity: 0.8;">|</span>
+    <span data-i18n="demoBanner">Demo Environment — Synthetic Data</span>
+  </div>
+
+  <!-- Offline Mode Simulation Banner -->
+  <div id="offlineBanner" class="offline-mode-banner hidden">
+    <span>🔴 OFFLINE SIMULATION MODE — Data is cached in local storage & queued for synchronization.</span>
+  </div>
+
+  <!-- LOGIN SCREEN CONTAINER -->
+  <div id="loginScreen" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-brand">
+        <!-- AyushPravah Unified Emblem Logo -->
+        <svg class="login-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="apGradientGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1b4332"/>
+              <stop offset="100%" stop-color="#2d6a4f"/>
+            </linearGradient>
+            <linearGradient id="apGradientBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1e3a8a"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </linearGradient>
+            <linearGradient id="apGradientLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#2d6a4f"/>
+              <stop offset="100%" stop-color="#52b788"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Outer Circular Shield & Scientific Precision Arc -->
+          <circle cx="50" cy="50" r="44" stroke="url(#apGradientBlue)" stroke-width="3.5" stroke-dasharray="210 65" fill="#f8fafc"/>
+          <circle cx="50" cy="50" r="38" stroke="url(#apGradientGreen)" stroke-width="2.5" fill="none"/>
+          
+          <!-- Connected Healthcare Flow Stream Arc ("Pravah") -->
+          <path d="M 18 50 A 32 32 0 0 1 82 50" stroke="url(#apGradientBlue)" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9"/>
+          
+          <!-- Central Stylized Ayurveda Medicinal Leaf -->
+          <path d="M 50 18 C 30 30 32 54 50 64 C 68 54 70 30 50 18 Z" fill="url(#apGradientLeaf)"/>
+          <path d="M 50 22 L 50 60" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <path d="M 50 34 Q 40 40 34 42" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M 50 44 Q 60 50 64 52" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+          
+          <!-- Dynamic Clinical Research Flow Wave & Data Axis -->
+          <path d="M 22 56 Q 36 44 50 56 T 78 56" stroke="url(#apGradientBlue)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          
+          <!-- Central Precision Research Node -->
+          <circle cx="50" cy="56" r="4" fill="#1e3a8a"/>
+          <circle cx="50" cy="56" r="2" fill="#ffffff"/>
+          
+          <!-- Base Anchor Dot -->
+          <circle cx="50" cy="78" r="3" fill="#2d6a4f"/>
+        </svg>
+        <h1 data-i18n="appTitle">AYUSHPRAVAH</h1>
+        <p data-i18n="tagline">Capture anywhere. Sync automatically. Detect problems. Act early.</p>
+      </div>
+
+      <form id="loginForm" onsubmit="event.preventDefault(); App.handleLogin();">
+        <div class="form-group">
+          <label>User ID / Name</label>
+          <input type="text" id="loginUserId" class="form-control" value="Dr. Rajesh Sharma" required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" value="••••••••" required>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="demoRole">Select Clinical Trial Role</label>
+          <select id="loginRoleSelect" class="form-control">
+            <option value="role_pi">1. Principal Investigator (PI)</option>
+            <option value="role_coordinator">2. Study Coordinator</option>
+            <option value="role_field">3. Field Investigator</option>
+            <option value="role_monitor">4. Clinical Trial Monitor</option>
+            <option value="role_ethics">5. Ethics Committee</option>
+            <option value="role_pv">6. Pharmacovigilance Officer</option>
+            <option value="role_admin">7. Administrator</option>
+            <option value="role_regulator">8. Regulator / Read-only</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full" style="padding: 12px; margin-top: 10px;" data-i18n="login">
+          Launch Control Tower
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MAIN APPLICATION WORKSPACE -->
+  <div id="appWorkspace" class="app-container hidden">
+
+    <!-- GLOBAL HEADER -->
+    <header class="main-header">
+      <div class="header-left">
+        <button class="mobile-toggle-btn" onclick="App.toggleMobileSidebar()">☰</button>
+        <div class="header-brand">
+          <svg class="header-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="apGradientGreenH" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1b4332"/>
+                <stop offset="100%" stop-color="#2d6a4f"/>
+              </linearGradient>
+              <linearGradient id="apGradientBlueH" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e3a8a"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+              <linearGradient id="apGradientLeafH" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2d6a4f"/>
+                <stop offset="100%" stop-color="#52b788"/>
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="44" stroke="url(#apGradientBlueH)" stroke-width="3.5" stroke-dasharray="210 65" fill="#f8fafc"/>
+            <circle cx="50" cy="50" r="38" stroke="url(#apGradientGreenH)" stroke-width="2.5" fill="none"/>
+            <path d="M 18 50 A 32 32 0 0 1 82 50" stroke="url(#apGradientBlueH)" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <path d="M 50 18 C 30 30 32 54 50 64 C 68 54 70 30 50 18 Z" fill="url(#apGradientLeafH)"/>
+            <path d="M 50 22 L 50 60" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+            <path d="M 22 56 Q 36 44 50 56 T 78 56" stroke="url(#apGradientBlueH)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <circle cx="50" cy="56" r="4" fill="#1e3a8a"/>
+            <circle cx="50" cy="56" r="2" fill="#ffffff"/>
+            <circle cx="50" cy="78" r="3" fill="#2d6a4f"/>
+          </svg>
+          <div>
+            <span class="header-brand-title">AYUSHPRAVAH</span>
+            <span class="badge badge-info" style="margin-left: 6px; font-size: 10px;">CTMS Prototype</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header Center Search -->
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="globalSearchInput" class="form-control" data-i18n-placeholder="searchPlaceholder" placeholder="Search Trial ID, Site, Participant..." onkeyup="App.handleSearch(this.value)">
+        <div id="searchResultsDropdown" class="hidden" style="position: absolute; top: 100%; left: 0; right: 0; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 500; max-height: 300px; overflow-y: auto;"></div>
+      </div>
+
+      <div class="header-right">
+
+        <!-- SIH Demo Guided Tour Trigger -->
+        <button class="btn btn-warning btn-sm" onclick="App.startGuidedTour()" title="1-Click Demo Execution Flow">
+          ▶ SIH Demo Guide
+        </button>
+
+        <!-- Connectivity Toggle -->
+        <div class="header-control-item" title="Toggle Offline Simulation">
+          <span id="connectivityStatusBadge" class="badge badge-success">🟢 ONLINE</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="offlineToggleInput" onchange="App.toggleOfflineMode(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- PII Masking Switch -->
+        <div class="header-control-item" title="Privacy by Design - Patient Name Masking">
+          <label class="toggle-switch">
+            <input type="checkbox" id="piiMaskingToggle" checked onchange="App.togglePiiMasking(this.checked)">
+            <span class="toggle-slider"></span>
+          </label>
+          <span style="font-size: 11px; font-weight: 700;" data-i18n="hidePatientNames">Hide Patient Names</span>
+        </div>
+
+        <!-- Live Demo Role Switcher -->
+        <div class="header-control-item">
+          <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);" data-i18n="demoRole">Demo Role:</span>
+          <select id="headerRoleSelect" class="form-control" style="width: auto; padding: 4px 8px; font-size: 12px; font-weight: 700;" onchange="App.switchRole(this.value)">
+            <option value="role_pi">PI</option>
+            <option value="role_coordinator">Study Coordinator</option>
+            <option value="role_field">Field Investigator</option>
+            <option value="role_monitor">Monitor</option>
+            <option value="role_ethics">Ethics Committee</option>
+            <option value="role_pv">PV Officer</option>
+            <option value="role_admin">Administrator</option>
+            <option value="role_regulator">Regulator</option>
+          </select>
+        </div>
+
+        <!-- Language Selector (10 Indic Languages) -->
+        <div class="header-control-item">
+          <select id="languageSelect" class="form-control" style="width: auto; padding: 4px 8px; font-size: 12px; font-weight: 700;" onchange="App.switchLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+            <option value="ml">മലയാളം (Malayalam)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="bn">বাংলা (Bengali)</option>
+            <option value="gu">ગુજરાતી (Gujarati)</option>
+            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+          </select>
+        </div>
+
+        <!-- Notifications Bell -->
+        <button class="btn btn-secondary btn-sm" style="position: relative;" onclick="App.toggleNotificationDrawer()">
+          🔔 <span id="notificationBadge" class="badge badge-danger" style="position: absolute; top: -4px; right: -4px; font-size: 9px; padding: 2px 5px;">4</span>
+        </button>
+
+        <!-- Logout / Reset -->
+        <button class="btn btn-secondary btn-sm" onclick="App.handleLogout()">Logout</button>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <!-- SIDEBAR NAVIGATION -->
+      <aside id="appSidebar" class="sidebar">
+        <nav class="sidebar-nav">
+          <a class="nav-item active" data-view="controlTower" onclick="App.navigateTo('controlTower')">
+            <span class="nav-item-icon">🏠</span>
+            <span data-i18n="controlTower">Control Tower</span>
+          </a>
+          <a class="nav-item" data-view="study360" onclick="App.navigateTo('study360')">
+            <span class="nav-item-icon">🔬</span>
+            <span data-i18n="study360">Study 360°</span>
+          </a>
+          <a class="nav-item" data-view="recruitmentSites" onclick="App.navigateTo('recruitmentSites')">
+            <span class="nav-item-icon">👥</span>
+            <span data-i18n="recruitmentSites">Recruitment & Sites</span>
+          </a>
+          <a class="nav-item" data-view="complianceCenter" onclick="App.navigateTo('complianceCenter')">
+            <span class="nav-item-icon">📋</span>
+            <span data-i18n="complianceCenter">Compliance Center</span>
+          </a>
+          <a class="nav-item" data-view="dataQuality" onclick="App.navigateTo('dataQuality')">
+            <span class="nav-item-icon">📊</span>
+            <span data-i18n="dataQuality">Data Quality</span>
+          </a>
+          <a class="nav-item" data-view="protocolDeviations" onclick="App.navigateTo('protocolDeviations')">
+            <span class="nav-item-icon">⚠️</span>
+            <span data-i18n="protocolDeviations">Protocol Deviations</span>
+          </a>
+          <a class="nav-item" data-view="pharmacovigilance" onclick="App.navigateTo('pharmacovigilance')">
+            <span class="nav-item-icon">🛡</span>
+            <span data-i18n="pharmacovigilance">Safety & PV</span>
+          </a>
+          <a class="nav-item" data-view="fieldEdc" onclick="App.navigateTo('fieldEdc')">
+            <span class="nav-item-icon">📱</span>
+            <span data-i18n="fieldEdc">Field EDC</span>
+          </a>
+          <a class="nav-item" data-view="eConsent" onclick="App.navigateTo('eConsent')">
+            <span class="nav-item-icon">📝</span>
+            <span data-i18n="eConsent">Informed Consent</span>
+          </a>
+          <a class="nav-item" data-view="syncCenter" onclick="App.navigateTo('syncCenter')">
+            <span class="nav-item-icon">🔄</span>
+            <span data-i18n="syncCenter">Sync Center</span>
+          </a>
+          <a class="nav-item" data-view="interoperability" onclick="App.navigateTo('interoperability')">
+            <span class="nav-item-icon">🔗</span>
+            <span data-i18n="interoperability">Interoperability</span>
+          </a>
+          <a class="nav-item" data-view="reportsExport" onclick="App.navigateTo('reportsExport')">
+            <span class="nav-item-icon">📑</span>
+            <span data-i18n="reportsExport">Reports & Export</span>
+          </a>
+          <a class="nav-item" data-view="auditTrail" onclick="App.toggleAuditSidePanel()">
+            <span class="nav-item-icon">🛡</span>
+            <span data-i18n="auditTrail">Audit Trail</span>
+          </a>
+          <a class="nav-item" data-view="communityOutreach" onclick="App.navigateTo('communityOutreach')">
+            <span class="nav-item-icon">🌱</span>
+            <span data-i18n="communityOutreach">Community Outreach</span>
+          </a>
+          <a class="nav-item" data-view="settings" onclick="App.navigateTo('settings')">
+            <span class="nav-item-icon">⚙</span>
+            <span data-i18n="settings">Settings</span>
+          </a>
+
+          <div style="margin-top: auto; padding: 12px; border-top: 1px solid var(--border-color);">
+            <button class="btn btn-outline-primary btn-sm w-full" onclick="App.navigateTo('dpdpPrivacy')" data-i18n="dpdpPrivacy">
+              DPDP & Privacy
+            </button>
+            <button class="btn btn-secondary btn-sm w-full" style="margin-top: 6px;" onclick="App.navigateTo('prodArchitecture')" data-i18n="prodArchitecture">
+              Architecture Spec
+            </button>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT VIEW PANELS -->
+      <main class="main-content">
+
+        <!-- VIEW 1: CONTROL TOWER -->
+        <section id="view-controlTower" class="view-panel">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="controlTower">Research Control Tower</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Real-time cloud & offline-first monitoring for AIIA Ayurveda Research Portfolio.</p>
+            </div>
+            <button class="btn btn-primary" onclick="App.navigateTo('fieldEdc')">+ New Field Visit</button>
+          </div>
+
+          <!-- Top KPI Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="activeStudies">Active Studies</span>
+              <span class="kpi-val" id="kpiActiveStudies">12</span>
+              <div class="kpi-footer"><span class="badge badge-success">Phase I - III</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="participantsEnrolled">Participants Enrolled</span>
+              <span class="kpi-val" id="kpiParticipantsEnrolled">1,284</span>
+              <div class="kpi-footer"><span class="badge badge-info">78% Target</span> Target: 1,600</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="sitesActive">Active Sites</span>
+              <span class="kpi-val" id="kpiActiveSites">24</span>
+              <div class="kpi-footer"><span class="badge badge-success">6 States</span> Multi-Center</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="complianceRate">Compliance Rate</span>
+              <span class="kpi-val" id="kpiComplianceRate">94%</span>
+              <div class="kpi-footer"><span class="badge badge-success">GCP-ASU</span> checklist (demo)</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="dataQualityScore">Data Quality Score</span>
+              <span class="kpi-val" id="kpiDataQuality">91%</span>
+              <div class="kpi-footer"><span class="badge badge-success">CDISC-aligned (demo)</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="openSafetyCases">Open Safety Cases</span>
+              <span class="kpi-val" id="kpiOpenSafety" style="color: var(--warning-color);">7</span>
+              <div class="kpi-footer"><span class="badge badge-warning">1 Expedited SAE</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title" data-i18n="criticalAlerts">Critical Alerts</span>
+              <span class="kpi-val" id="kpiCriticalAlerts" style="color: var(--danger-color);">3</span>
+              <div class="kpi-footer"><span class="badge badge-danger">Action Required</span></div>
+            </div>
+          </div>
+
+          <!-- Trial Health Overview Section -->
+          <div class="health-overview-section">
+            <div class="section-header">
+              <div class="section-title">
+                <span>🛡</span>
+                <span data-i18n="trialHealthOverview">Trial Health Overview</span>
+                <span class="badge badge-info" style="margin-left: 8px;">Prototype Composite Indicator</span>
+              </div>
+            </div>
+
+            <div class="health-grid">
+              <div id="healthGaugeSlot"></div>
+              <div class="health-breakdown-grid">
+                <div class="health-breakdown-card">
+                  <span class="breakdown-label">Recruitment</span>
+                  <div class="breakdown-val" style="color: var(--primary-color);">78%</div>
+                  <div class="progress-bar-track"><div class="progress-bar-fill" style="width: 78%; background: var(--primary-color);"></div></div>
+                </div>
+                <div class="health-breakdown-card">
+                  <span class="breakdown-label">Compliance</span>
+                  <div class="breakdown-val" style="color: var(--success-color);">94%</div>
+                  <div class="progress-bar-track"><div class="progress-bar-fill" style="width: 94%; background: var(--success-color);"></div></div>
+                </div>
+                <div class="health-breakdown-card">
+                  <span class="breakdown-label">Safety Response</span>
+                  <div class="breakdown-val" style="color: var(--warning-color);">85%</div>
+                  <div class="progress-bar-track"><div class="progress-bar-fill" style="width: 85%; background: var(--warning-color);"></div></div>
+                </div>
+                <div class="health-breakdown-card">
+                  <span class="breakdown-label">Data Quality</span>
+                  <div class="breakdown-val" style="color: var(--info-color);">91%</div>
+                  <div class="progress-bar-track"><div class="progress-bar-fill" style="width: 91%; background: var(--info-color);"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rule-Based Smart Alert Engine & Critical Actions -->
+          <div style="margin-bottom: 24px;">
+            <div class="section-header">
+              <div class="section-title">
+                <span>⚡</span>
+                <span data-i18n="criticalActions">Critical Actions (Rule-Based Engine)</span>
+              </div>
+            </div>
+            <div id="criticalActionsGrid" class="critical-actions-grid"></div>
+          </div>
+        </section>
+
+        <!-- VIEW 2: STUDY 360 -->
+        <section id="view-study360" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Study 360° Lifecycle Command</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Complete end-to-end visibility for clinical protocol lifecycle.</p>
+            </div>
+            <div>
+              <select id="studySelectDropdown" class="form-control" style="font-weight: 700;" onchange="App.renderStudy360(this.value)">
+                <option value="AYU-CT-026">AYU-CT-026: Ayush-64 in Osteoarthritis</option>
+                <option value="AYU-CT-014">AYU-CT-014: Ashwagandha in Chronic Stress</option>
+                <option value="AYU-CT-089">AYU-CT-089: Guduchi Ghan Vati Metabolic</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Lifecycle Stepper -->
+          <div id="studyLifecycleStepper" class="stepper-wrapper"></div>
+
+          <!-- Study Info Banner Card -->
+          <div id="studyHeaderCard" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow-sm);"></div>
+
+          <!-- Tabs -->
+          <div class="tab-container">
+            <button class="tab-btn active" onclick="App.switchStudyTab('overview', this)">Overview</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('recruitment', this)">Recruitment</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('sites', this)">Sites</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('visits', this)">Visits</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('data', this)">Data Quality</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('safety', this)">Safety</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('compliance', this)">Compliance</button>
+            <button class="tab-btn" onclick="App.switchStudyTab('audit', this)">Audit</button>
+          </div>
+
+          <div id="studyTabContent" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px;"></div>
+        </section>
+
+        <!-- VIEW 3: RECRUITMENT & SITES -->
+        <section id="view-recruitmentSites" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Multi-Centre Recruitment & Site Tracking</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Real-time site performance, enrolment quotas, and recruitment lag detection.</p>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-secondary btn-sm" onclick="App.filterSites('All')">All</button>
+              <button class="btn btn-outline-primary btn-sm" onclick="App.filterSites('On Track')">On Track</button>
+              <button class="btn btn-warning btn-sm" onclick="App.filterSites('Needs Attention')">Needs Attention</button>
+            </div>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+            <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 16px;">Site Target vs Enrolled Comparison</h3>
+            <div id="sitesChartSlot"></div>
+          </div>
+
+          <div id="sitesGridCards" class="kpi-grid"></div>
+        </section>
+
+        <!-- VIEW 4: COMPLIANCE CENTER -->
+        <section id="view-complianceCenter" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Regulatory & Ethics Compliance Center</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Tracking CTRI, NDCT Rules 2019, GCP-ASU, and Institutional Ethics Committee milestones.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Regulatory Requirement</th>
+                  <th>Trial / Site</th>
+                  <th>Due Date</th>
+                  <th>Responsible Role</th>
+                  <th>Status</th>
+                  <th>Next Action Required</th>
+                </tr>
+              </thead>
+              <tbody id="complianceTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- VIEW 5: DATA QUALITY -->
+        <section id="view-dataQuality" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Data Quality & Query Control</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Missing fields, out-of-window visit flags, and verification queries.</p>
+            </div>
+          </div>
+
+          <div class="kpi-grid" style="margin-bottom: 20px;">
+            <div class="kpi-card">
+              <span class="kpi-title">Missing Fields</span>
+              <span class="kpi-val">14</span>
+              <div class="kpi-footer"><span class="badge badge-warning">Action Needed</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Open Queries</span>
+              <span class="kpi-val">8</span>
+              <div class="kpi-footer"><span class="badge badge-info">In Verification</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Out-of-Window Visits</span>
+              <span class="kpi-val">3</span>
+              <div class="kpi-footer"><span class="badge badge-danger">Deviations</span></div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Participant ID</th>
+                  <th>Site</th>
+                  <th>Query Category</th>
+                  <th>Description</th>
+                  <th>Severity</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong class="pt-id-cell">PT-402-BLR</strong></td>
+                  <td>KA-03</td>
+                  <td>Missing Visit Data</td>
+                  <td>Day 14 lab biomarker assessment missing</td>
+                  <td><span class="badge badge-danger">High</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="App.navigateTo('protocolDeviations')">Resolve Query</button></td>
+                </tr>
+                <tr>
+                  <td><strong class="pt-id-cell">PT-418-AP</strong></td>
+                  <td>AP-04</td>
+                  <td>Lab Verification</td>
+                  <td>SGOT/SGPT liver enzyme baseline verification required</td>
+                  <td><span class="badge badge-warning">Medium</span></td>
+                  <td><button class="btn btn-secondary btn-sm" onclick="Components.showToast('Lab query re-sent to Site AP-04', 'info')">Verify Lab</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- VIEW 6: PROTOCOL DEVIATION TRIAGE BOARD -->
+        <section id="view-protocolDeviations" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Protocol Deviation & Action Center</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Triage, assign, and audit protocol non-compliance events.</p>
+            </div>
+          </div>
+
+          <div id="deviationsGrid" class="critical-actions-grid"></div>
+        </section>
+
+        <!-- VIEW 7: PHARMACOVIGILANCE / SAFETY CENTER -->
+        <section id="view-pharmacovigilance" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Safety & Pharmacovigilance Center</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Adverse Event (AE) / Serious Adverse Event (SAE) tracking under NDCT Rules 2019.</p>
+            </div>
+            <button class="btn btn-danger" onclick="App.openQuickAeModal()">+ Quick AE / SAE Report</button>
+          </div>
+
+          <!-- SAE Deadline Clock Card -->
+          <div style="background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%); color: #ffffff; border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: var(--shadow-md);" class="flex justify-between items-center">
+            <div>
+              <span class="badge badge-danger" style="background: #ffffff; color: #991b1b;">24h Regulatory Deadline Clock</span>
+              <h3 style="font-size: 18px; font-weight: 800; margin-top: 6px;">Case SAE-2026-088 (Participant PT-418-AP)</h3>
+              <p style="font-size: 13px; opacity: 0.9;">Severe Epigastric Burning & Nausea • Site AP-04</p>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 28px; font-weight: 800; font-family: monospace; background: rgba(0,0,0,0.3); padding: 6px 14px; border-radius: 8px;">18h 42m 10s</span>
+              <div style="font-size: 11px; margin-top: 4px; opacity: 0.8;">Regulatory reporting window (24h)</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Case ID</th>
+                  <th>Trial ID</th>
+                  <th>Participant</th>
+                  <th>Adverse Event</th>
+                  <th>Severity / Type</th>
+                  <th>Reporting Clock</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="safetyTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- VIEW 8: OFFLINE-FIRST FIELD EDC -->
+        <section id="view-fieldEdc" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);">Offline-First Field EDC (eCRF)</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Capture participant visit observations in remote field settings without active connectivity.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="edcModeBadge" class="badge badge-success">🟢 ONLINE MODE</span>
+            </div>
+          </div>
+
+          <form id="fieldEdcForm" onsubmit="event.preventDefault(); App.saveFieldEdcVisit();" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label data-i18n="trialId">Trial ID</label>
+                <select id="edcTrialId" class="form-control" required>
+                  <option value="AYU-CT-026">AYU-CT-026 (Ayush-64 Osteoarthritis)</option>
+                  <option value="AYU-CT-014">AYU-CT-014 (Ashwagandha Stress)</option>
+                  <option value="AYU-CT-089">AYU-CT-089 (Guduchi Ghan Vati)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="siteId">Site ID</label>
+                <select id="edcSiteId" class="form-control" required>
+                  <option value="KA-03">Site KA-03 (Bengaluru)</option>
+                  <option value="AP-04">Site AP-04 (Tirupati)</option>
+                  <option value="TS-07">Site TS-07 (Hyderabad)</option>
+                  <option value="AIIA-DEL">AIIA Delhi Central</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Participant ID</label>
+                <select id="edcParticipantId" class="form-control" required>
+                  <option value="PT-402-BLR">PT-402-BLR (Lakshmi Devi)</option>
+                  <option value="PT-418-AP">PT-418-AP (Rahul Kumar)</option>
+                  <option value="PT-431-TG">PT-431-TG (Sita Rao)</option>
+                  <option value="PT-445-KA">PT-445-KA (Vikram Singh)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="visitName">Visit Name</label>
+                <select id="edcVisitName" class="form-control" required>
+                  <option value="Day 1 Baseline">Day 1 Baseline</option>
+                  <option value="Day 7 Assessment">Day 7 Assessment</option>
+                  <option value="Day 14 Biomarker">Day 14 Biomarker</option>
+                  <option value="Day 28 Interim">Day 28 Interim</option>
+                  <option value="Day 56 Close-out">Day 56 Close-out</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label data-i18n="visitDate">Visit Date</label>
+                <input type="date" id="edcVisitDate" class="form-control" value="2026-09-28" required>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="vitals">Vital Signs (BP / Pulse / Temp)</label>
+                <input type="text" id="edcVitals" class="form-control" placeholder="120/80 mmHg, 74 bpm, 98.4°F" required>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="prakriti">Prakriti Research Assessment</label>
+                <select id="edcPrakriti" class="form-control">
+                  <option value="Vataja">Vataja Dominant</option>
+                  <option value="Pittaja">Pittaja Dominant</option>
+                  <option value="Kaphaja">Kaphaja Dominant</option>
+                  <option value="Vata-Pitta">Vata-Pitta Dwandvaja</option>
+                  <option value="Pitta-Kapha">Pitta-Kapha Dwandvaja</option>
+                  <option value="Sama">Sama Dhatu</option>
+                </select>
+                <span style="font-size: 10px; color: var(--text-muted);">Research field configuration varies by approved study protocol.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="ayushIntervention">Ayurveda Intervention & Dosage Schedule</label>
+              <input type="text" id="edcDosage" class="form-control" placeholder="Ayush-64 Tablet 500mg BID after meals with warm water" required>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="observations">Clinical Visit Observations & Symptom Scores</label>
+              <textarea id="edcObservations" class="form-control" rows="3" placeholder="Joint mobility improved. Visual Analog Scale (VAS) pain score reduced from 7 to 4."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label data-i18n="sideEffects">Reported Side Effects / Adverse Events</label>
+              <input type="text" id="edcSideEffects" class="form-control" placeholder="None reported during visit window">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding: 10px 24px;" data-i18n="saveLocally">
+              Save Visit Locally
+            </button>
+          </form>
+        </section>
+
+        <!-- VIEW 9: OFFLINE e-CONSENT MODULE -->
+        <section id="view-eConsent" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="eConsent">Informed Consent Module</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Offline-first e-Consent with 10-language translation & interactive HTML5 signature pad.</p>
+            </div>
+            <span class="badge badge-info" data-i18n="consentDisclaimer">Prototype e-Consent Demonstration</span>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); max-width: 800px; margin: 0 auto;">
+            <div class="flex justify-between items-center" style="border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 16px;">
+              <div>
+                <h3 style="font-size: 16px; font-weight: 700;" data-i18n="consentTitle">Participant Informed Consent Form</h3>
+                <span style="font-size: 12px; color: var(--text-muted);">Trial: AYU-CT-026 • Site: KA-03</span>
+              </div>
+              <div>
+                <label style="font-size: 11px; font-weight: 700;">Consent Form Language:</label>
+                <select id="consentLangSelect" class="form-control" style="width: auto;" onchange="App.switchLanguage(this.value)">
+                  <option value="en">English</option>
+                  <option value="te">తెలుగు (Telugu)</option>
+                  <option value="hi">हिन्दी (Hindi)</option>
+                  <option value="ta">தமிழ் (Tamil)</option>
+                  <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                  <option value="ml">മലയാളം (Malayalam)</option>
+                  <option value="mr">मराठी (Marathi)</option>
+                  <option value="bn">বাংলা (Bengali)</option>
+                  <option value="gu">ગુજરાતી (Gujarati)</option>
+                  <option value="or">ଓଡ଼ିଆ (Odia)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Consent Statement Content -->
+            <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 18px; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+              <p data-i18n="consentText">
+                You are being invited to participate in an Ayurveda clinical research study. The study team will explain the study, its procedures, possible risks and benefits, and your rights before participation. Participation is voluntary. You may ask questions and may choose not to participate.
+              </p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label class="flex items-center gap-2" style="font-weight: 600; font-size: 13px; cursor: pointer;">
+                <input type="checkbox" id="consentConfirmCheckbox" style="width: 18px; height: 18px;">
+                <span data-i18n="consentConfirmCheck">Participant confirms that the information has been explained and understood.</span>
+              </label>
+            </div>
+
+            <!-- HTML5 Canvas Signature Pad -->
+            <div style="margin-bottom: 20px;">
+              <label style="font-weight: 700; font-size: 12px; text-transform: uppercase; margin-bottom: 6px; display: block;">
+                Participant Electronic Signature (Mouse or Touchscreen)
+              </label>
+              <div class="signature-pad-wrapper">
+                <canvas id="consentSignatureCanvas" class="signature-canvas"></canvas>
+              </div>
+              <div class="flex justify-between items-center" style="margin-top: 8px;">
+                <button type="button" id="clearConsentSignatureBtn" class="btn btn-secondary btn-sm" data-i18n="clearSignature">Clear Signature</button>
+                <span style="font-size: 11px; color: var(--text-muted);">Timestamp: 2026-09-28 • Geo: 12.9716° N, 77.5946° E</span>
+              </div>
+            </div>
+
+            <div class="flex justify-end gap-4">
+              <button type="button" class="btn btn-secondary" onclick="App.navigateTo('controlTower')" data-i18n="declineConsent">Decline</button>
+              <button type="button" class="btn btn-primary" onclick="App.saveConsentForm()" data-i18n="saveConsent">Save Consent</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 10: SYNC CENTER -->
+        <section id="view-syncCenter" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="syncCenter">Offline Sync Center</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Manage pending offline local records and trigger secure central database synchronization.</p>
+            </div>
+            <button class="btn btn-primary" onclick="App.triggerSyncNow()" data-i18n="syncNow">Sync Now</button>
+          </div>
+
+          <div class="kpi-grid" style="margin-bottom: 24px;">
+            <div class="kpi-card">
+              <span class="kpi-title">Pending Records</span>
+              <span class="kpi-val" id="syncPendingCount" style="color: var(--warning-color);">3</span>
+              <div class="kpi-footer"><span class="badge badge-warning">Local Storage</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Synced Records</span>
+              <span class="kpi-val" id="syncSuccessCount" style="color: var(--success-color);">124</span>
+              <div class="kpi-footer"><span class="badge badge-success">Central DB</span></div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Failed / Conflicts</span>
+              <span class="kpi-val">0</span>
+              <div class="kpi-footer"><span class="badge badge-neutral">Clean State</span></div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 12px;">Pending Synchronization Queue</h3>
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Record ID</th>
+                  <th>Record Type</th>
+                  <th>Trial ID</th>
+                  <th>Participant</th>
+                  <th>Timestamp</th>
+                  <th>Cache Status</th>
+                </tr>
+              </thead>
+              <tbody id="syncPendingTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- VIEW 11: INTEROPERABILITY HUB -->
+        <section id="view-interoperability" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="interoperability">Interoperability & Data Standards Hub</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">CDISC (SDTM/ADaM), FHIR R4, and ABDM representative data mapping visualizer.</p>
+            </div>
+          </div>
+
+          <div class="tab-container">
+            <button class="tab-btn active" onclick="App.switchInteropTab('fhir', this)">FHIR R4 JSON</button>
+            <button class="tab-btn" onclick="App.switchInteropTab('cdisc', this)">CDISC SDTM Mapping</button>
+            <button class="tab-btn" onclick="App.switchInteropTab('abdm', this)">ABDM Health ID Concept</button>
+          </div>
+
+          <div id="interopPayloadView" style="background: #0f172a; color: #38bdf8; border-radius: 12px; padding: 20px; font-family: monospace; font-size: 12px; max-height: 450px; overflow-y: auto;"></div>
+        </section>
+
+        <!-- VIEW 12: REPORTS & EXPORT -->
+        <section id="view-reportsExport" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="reportsExport">Reports & Data Export</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Export prototype clinical research datasets in CSV or JSON format.</p>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-title">Study Portfolio Report</span>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 8px 0;">Export active trial metrics, enrolment percentages & site breakdowns.</p>
+              <div class="flex gap-2">
+                <button class="btn btn-primary btn-sm" onclick="Components.exportData('csv', 'AyushPravah_Study_Report', Store.getState().data.studies)">CSV Export</button>
+                <button class="btn btn-secondary btn-sm" onclick="Components.exportData('json', 'AyushPravah_Study_Report', Store.getState().data.studies)">JSON Export</button>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-title">Safety & AE Case Report</span>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 8px 0;">Export pharmacovigilance cases, SAE logs & regulatory deadlines.</p>
+              <div class="flex gap-2">
+                <button class="btn btn-danger btn-sm" onclick="Components.exportData('csv', 'AyushPravah_Safety_Report', Store.getState().data.safetyCases)">CSV Export</button>
+                <button class="btn btn-secondary btn-sm" onclick="Components.exportData('json', 'AyushPravah_Safety_Report', Store.getState().data.safetyCases)">JSON Export</button>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <span class="kpi-title">Protocol Deviations Report</span>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 8px 0;">Export flagged deviations, root-cause categories & assignment states.</p>
+              <div class="flex gap-2">
+                <button class="btn btn-warning btn-sm" onclick="Components.exportData('csv', 'AyushPravah_Deviations_Report', Store.getState().data.protocolDeviations)">CSV Export</button>
+                <button class="btn btn-secondary btn-sm" onclick="Components.exportData('json', 'AyushPravah_Deviations_Report', Store.getState().data.protocolDeviations)">JSON Export</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 13: COMMUNITY OUTREACH -->
+        <section id="view-communityOutreach" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="communityOutreach">Community Outreach & Recruitment</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Generate compliant recruitment outreach messages for local field health workers.</p>
+            </div>
+            <button class="btn btn-primary" onclick="App.openOutreachModal()" data-i18n="generateWhatsAppLink">
+              [ Generate WhatsApp Recruitment Link ]
+            </button>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); max-width: 700px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">Recruitment Communication Guidelines</h3>
+            <ul style="padding-left: 20px; font-size: 13px; line-height: 1.8; color: var(--text-muted);">
+              <li>Do NOT promise free treatment or guaranteed monetary benefits.</li>
+              <li>Do NOT claim guaranteed eligibility before screening assessment.</li>
+              <li>Do NOT make unverified medical claims regarding trial interventions.</li>
+              <li>Always include approved Institutional Ethics Committee (IEC) registration numbers.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- VIEW 14: SETTINGS -->
+        <section id="view-settings" class="view-panel hidden">
+          <div class="flex justify-between items-center" style="margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green);" data-i18n="settings">Settings & Configuration</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Manage application preferences, demo state, and view system specifications.</p>
+            </div>
+            <button class="btn btn-danger" onclick="App.resetDemoData()" data-i18n="resetDemoData">Reset Demo Data</button>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); max-width: 600px;">
+            <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">About AyushPravah</h3>
+            <p style="font-size: 13px; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px;">
+              AyushPravah is a static frontend prototype demonstrating an offline-first clinical trial monitoring and coordination workflow for Ayurveda research (Problem Statement SIH26046).
+            </p>
+            <div style="font-size: 12px; color: var(--text-dark); background: #f8fafc; padding: 12px; border-radius: 8px;">
+              <strong>Build Version:</strong> SIH26046-PROTOTYPE-1.0.0<br>
+              <strong>Data Mode:</strong> Synthetic / De-identified Demo Data<br>
+              <strong>Interoperability Engine:</strong> Representative CDISC & FHIR R4 Mappings
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 15: DPDP PRIVACY SECTION -->
+        <section id="view-dpdpPrivacy" class="view-panel hidden">
+          <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green); margin-bottom: 12px;">DPDP & Privacy-by-Design Architecture</h2>
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
+            <span class="badge badge-info" style="margin-bottom: 12px;">DPDP-Aligned Privacy Demonstration</span>
+            <p style="font-size: 13px; line-height: 1.6; color: var(--text-muted); margin-bottom: 16px;">
+              AyushPravah incorporates privacy-by-design concepts aligned with India's Digital Personal Data Protection (DPDP) Act 2023 principles:
+            </p>
+            <ul style="padding-left: 20px; font-size: 13px; line-height: 1.8;">
+              <li><strong>Data Minimization:</strong> Only trial-essential clinical & demographic parameters are collected.</li>
+              <li><strong>PII Masking:</strong> Patient names are masked to synthetic Trial IDs (e.g. PT-402-BLR) at the UI boundary.</li>
+              <li><strong>Explicit e-Consent:</strong> Informed consent capture is mandatory prior to eCRF data entry.</li>
+              <li><strong>Purpose-Based Access:</strong> Role-based access control (RBAC) restricts sensitive safety & trial views.</li>
+            </ul>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;" data-i18n="privacyNote">
+              Prototype privacy control — production implementation would enforce server-side access policies.
+            </p>
+          </div>
+        </section>
+
+        <!-- VIEW 16: PRODUCTION ARCHITECTURE SPEC -->
+        <section id="view-prodArchitecture" class="view-panel hidden">
+          <h2 style="font-size: 22px; font-weight: 800; color: var(--primary-deep-green); margin-bottom: 12px;">Proposed Production Architecture</h2>
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px;">
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+              Target production stack for enterprise deployment across AIIA institutes & nationwide clinical trial sites:
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; font-weight: 700; font-size: 13px;">
+              <div style="background: #e0f2fe; color: #0369a1; padding: 12px 24px; border-radius: 8px; width: 100%; max-width: 400px;">
+                React Progressive Web App (PWA) + Flutter Mobile (Offline EDC)
+              </div>
+              <div>↓ HTTPS REST / GraphQL APIs</div>
+              <div style="background: #d1fae5; color: #065f46; padding: 12px 24px; border-radius: 8px; width: 100%; max-width: 400px;">
+                Node.js / Python FastAPI Backend (RBAC & Smart Rule Engine)
+              </div>
+              <div>↓ Encrypted DB Connection</div>
+              <div style="background: #fef3c7; color: #92400e; padding: 12px 24px; border-radius: 8px; width: 100%; max-width: 400px;">
+                PostgreSQL (Encrypted at rest with Row-Level Security)
+              </div>
+              <div>↓ Interoperability Bus</div>
+              <div style="background: #f3e8ff; color: #6b21a8; padding: 12px 24px; border-radius: 8px; width: 100%; max-width: 400px;">
+                FHIR R4 Server / CDISC Converter / ABDM M2/M3 Gateway
+              </div>
+            </div>
+
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 24px; text-align: center;">
+              Proposed Production Architecture — not implemented in this static frontend prototype.
+            </p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- AUDIT TRAIL DARK SIDE PANEL -->
+  <div id="auditSidePanel" class="side-panel">
+    <div class="side-panel-header">
+      <h3 style="font-size: 16px; font-weight: 700; color: #ffffff;" data-i18n="auditTrail">System Audit Trail</h3>
+      <button class="btn btn-secondary btn-sm" onclick="App.toggleAuditSidePanel()">✕</button>
+    </div>
+    <div class="side-panel-body" id="auditPanelLogs"></div>
+  </div>
+
+  <!-- MODAL: ASSIGN PROTOCOL DEVIATION -->
+  <div id="assignModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Assign Protocol Deviation Task</h3>
+        <button class="btn btn-secondary btn-sm" onclick="App.closeAssignModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="assignDevId">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Assign responsible study coordinator or investigator to resolve this protocol deviation.
+        </p>
+        <div class="form-group">
+          <label>Assign To Coordinator / Investigator</label>
+          <select id="assignRecipientSelect" class="form-control">
+            <option value="Field Investigator 04 (KA-03)">Field Investigator 04 (KA-03)</option>
+            <option value="Site Coordinator AP-04">Site Coordinator AP-04</option>
+            <option value="Dr. Rajesh Sharma (PI)">Dr. Rajesh Sharma (PI)</option>
+            <option value="Clinical Trial Monitor">Clinical Trial Monitor</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="App.closeAssignModal()" data-i18n="close">Close</button>
+        <button class="btn btn-primary" onclick="App.confirmAssignDeviation()" data-i18n="assign">Assign</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: QUICK AE / SAE REPORT -->
+  <div id="quickAeModal" class="modal-overlay hidden">
+    <div class="modal-content" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Quick AE / SAE Safety Report</h3>
+        <button class="btn btn-secondary btn-sm" onclick="App.closeQuickAeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="aeReportForm" onsubmit="event.preventDefault(); App.submitAeReport();">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="form-group">
+              <label>Participant ID</label>
+              <select id="aeParticipantId" class="form-control" required>
+                <option value="PT-402-BLR">PT-402-BLR</option>
+                <option value="PT-418-AP">PT-418-AP</option>
+                <option value="PT-431-TG">PT-431-TG</option>
+                <option value="PT-445-KA">PT-445-KA</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Trial ID</label>
+              <select id="aeTrialId" class="form-control" required>
+                <option value="AYU-CT-026">AYU-CT-026</option>
+                <option value="AYU-CT-014">AYU-CT-014</option>
+                <option value="AYU-CT-089">AYU-CT-089</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Adverse Event Description</label>
+            <input type="text" id="aeEventTitle" class="form-control" placeholder="e.g. Mild Epigastric Burning, Transient Rash" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="form-group">
+              <label>Severity</label>
+              <select id="aeSeverity" class="form-control">
+                <option value="Mild">Mild</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Severe">Severe</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Seriousness Classification</label>
+              <select id="aeSeriousness" class="form-control">
+                <option value="Non-Serious AE">Non-Serious AE</option>
+                <option value="SAE - Hospitalization">SAE - Hospitalization</option>
+                <option value="SAE - Life Threatening">SAE - Life Threatening</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Clinical Notes</label>
+            <textarea id="aeClinicalNotes" class="form-control" rows="2" placeholder="Onset time, action taken, resolution state."></textarea>
+          </div>
+
+          <div class="flex justify-end gap-2" style="margin-top: 16px;">
+            <button type="button" class="btn btn-secondary" onclick="App.closeQuickAeModal()" data-i18n="close">Close</button>
+            <button type="submit" class="btn btn-danger">Submit Safety Report</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: WHATSAPP COMMUNITY OUTREACH RECRUITMENT -->
+  <div id="outreachModal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Localized Recruitment Message Generator</h3>
+        <button class="btn btn-secondary btn-sm" onclick="App.closeOutreachModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Select Target Local Language</label>
+          <select id="outreachLangSelect" class="form-control" onchange="App.generateOutreachText(this.value)">
+            <option value="en">English</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          </select>
+        </div>
+
+        <div style="background: #f0fdf4; border: 1px solid var(--primary-light); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+          <label style="font-size: 11px; font-weight: 700; color: var(--primary-deep-green);">Generated Compliant Outreach Message:</label>
+          <p id="outreachMessageText" style="font-size: 13px; line-height: 1.5; color: var(--text-dark); margin-top: 6px;"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="App.closeOutreachModal()" data-i18n="close">Close</button>
+        <button class="btn btn-primary" onclick="App.copyOutreachMessage()" data-i18n="copyMessage">Copy Message</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SIH DEMO GUIDED TOUR STEP CONTROLLER -->
+  <div id="sihTourModal" class="modal-overlay hidden">
+    <div class="modal-content" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 class="modal-title">SIH26046 25-Step Interactive Demo Walkthrough</h3>
+        <button class="btn btn-secondary btn-sm" onclick="App.closeGuidedTour()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; items-center; justify-between; margin-bottom: 12px;">
+          <span id="tourStepBadge" class="badge badge-info" style="font-size: 12px; padding: 6px 12px;">STEP 1 OF 25</span>
+          <span style="font-size: 12px; font-weight: 700; color: var(--primary-color);">Evaluation Flow</span>
+        </div>
+        <h4 id="tourStepTitle" style="font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px;"></h4>
+        <p id="tourStepDesc" style="font-size: 13px; line-height: 1.6; color: var(--text-muted); background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="App.prevTourStep()">← Previous</button>
+        <button class="btn btn-primary" onclick="App.executeTourAction()">Execute & Next Step →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/translations.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="apGradientGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b4332"/>
+      <stop offset="100%" stop-color="#2d6a4f"/>
+    </linearGradient>
+    <linearGradient id="apGradientBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="apGradientLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d6a4f"/>
+      <stop offset="100%" stop-color="#52b788"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circular Shield & Scientific Precision Arc -->
+  <circle cx="50" cy="50" r="44" stroke="url(#apGradientBlue)" stroke-width="3.5" stroke-dasharray="210 65" fill="#f8fafc"/>
+  <circle cx="50" cy="50" r="38" stroke="url(#apGradientGreen)" stroke-width="2.5" fill="none"/>
+  
+  <!-- Connected Healthcare Flow Stream Arc ("Pravah") -->
+  <path d="M 18 50 A 32 32 0 0 1 82 50" stroke="url(#apGradientBlue)" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9"/>
+  
+  <!-- Central Stylized Ayurveda Medicinal Leaf -->
+  <path d="M 50 18 C 30 30 32 54 50 64 C 68 54 70 30 50 18 Z" fill="url(#apGradientLeaf)"/>
+  <path d="M 50 22 L 50 60" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 50 34 Q 40 40 34 42" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 50 44 Q 60 50 64 52" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Dynamic Clinical Research Flow Wave & Data Axis -->
+  <path d="M 22 56 Q 36 44 50 56 T 78 56" stroke="url(#apGradientBlue)" stroke-width="3" stroke-linecap="round" fill="none"/>
+  
+  <!-- Central Precision Research Node -->
+  <circle cx="50" cy="56" r="4" fill="#1e3a8a"/>
+  <circle cx="50" cy="56" r="2" fill="#ffffff"/>
+  
+  <!-- Base Anchor Dot -->
+  <circle cx="50" cy="78" r="3" fill="#2d6a4f"/>
+</svg>
